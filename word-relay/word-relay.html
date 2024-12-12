@@ -12,14 +12,45 @@
     <button>입력</button>
     <script>
       const number = parseInt(prompt("몇 명이 참가하나요?"));
-      const isConfirm = confirm(`${number}명 맞나요?`);
+      const tagButton = document.querySelector("button");
+      const tagInput = document.querySelector("input");
+      const tagWord = document.querySelector("#word");
+      const tagOrder = document.querySelector("#order");
+      let word;
+      let newWord;
 
-      document
-        .querySelector("input")
-        .addEventListener("input", function (event) {
-          event.target.value;
-        });
-      document.querySelector("button").addEventListener("click", () => {});
+      const onClick = () => {
+        if (!word) {
+          word = newWord;
+          tagWord.textContent = word;
+          tagInput.value = "";
+          tagInput.focus();
+        } else {
+          if (word[word.length - 1] === newWord[0]) {
+            word = newWord;
+            tagWord.textContent = word;
+            tagInput.value = "";
+            tagInput.focus();
+            const order = parseInt(tagOrder.textContent);
+            if (order + 1 > number) {
+              tagOrder.textContent = 1;
+            } else {
+              tagOrder.textContent = order + 1;
+            }
+          } else {
+            alert("삐-");
+            tagInput.value = "";
+            tagInput.focus();
+          }
+        }
+      };
+
+      const onInput = (e) => {
+        newWord = e.target.value;
+      };
+
+      tagButton.addEventListener("click", onClick);
+      tagInput.addEventListener("input", onInput);
     </script>
   </body>
 </html>

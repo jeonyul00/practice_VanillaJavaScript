@@ -10,6 +10,16 @@
     <div>제시어: <span id="word"></span></div>
     <input type="text" />
     <button>입력</button>
-    <script></script>
+    <script>
+      const number = parseInt(prompt("몇 명이 참가하나요?"));
+      const isConfirm = confirm(`${number}명 맞나요?`);
+
+      document
+        .querySelector("input")
+        .addEventListener("input", function (event) {
+          event.target.value;
+        });
+      document.querySelector("button").addEventListener("click", () => {});
+    </script>
   </body>
 </html>
